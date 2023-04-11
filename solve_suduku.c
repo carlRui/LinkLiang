@@ -59,6 +59,15 @@ int main(void)
 		}
 		printf("\r\n");
 	}
+		printf("\r\n");
+	for(i = 0;i<SUDOKU_ROW;i++)
+	{
+		for(j = 0;j<=SUDOKU_COL;j++)
+		{
+			printf("%d ",group_data[i][j]);
+		}
+		printf("\r\n");
+	}
 
 	return 0;
 }
@@ -112,24 +121,31 @@ void set_col_data(void)
 
 void set_group_data(void)
 {
-	int i,j,record,find;
+	int i,j,record,find,row_size,col_size;
+	row_size = 0;
+	col_size = 0;
 	for(i=0;i<SUDOKU_ROW;i++)
 	{
 		for(j = 0,record = 0;j<SUDOKU_COL;j++)
 		{
+			row_size = (i)/3*3;
+			col_size = (i)%3;
 			for(find=0;find<SUDOKU_COL;find++)
 			{
-				if(sudoku_model[i][find]==(j+1))
+				
+				if(sudoku_model[row_size][col_size*3+find%3]==(j+1))
 				{
 					break;
 				}else if(find==SUDOKU_COL-1)
 				{
-					row_data[i][record]=j+1;
+					group_data[i][record]=j+1;
 					record++;
 				}
+				if((find+1)%3==0&&find!=0)
+					row_size++;
 			}
 		}
-		row_data[i][SUDOKU_COL]=record;
+		group_data[i][SUDOKU_COL]=record;
 	}
 
 }
