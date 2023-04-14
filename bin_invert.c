@@ -33,7 +33,7 @@ int main(int argc,char *argv[])
 		printf("please input digit and bit\r\n");
 		return 1;
 	}
-	if(is_digit)
+	if(is_digit&&is_bit)
 	{
 		digit = atoi(argv[1]);
 		bit = atoi(argv[2]);
