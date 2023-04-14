@@ -43,7 +43,7 @@ int main(int argc,char *argv[])
 		printf("\r\n");
 	}
 	else
-		printf("not is digit\r\n");
+		printf("is not digit\r\n");
 	return 0;
 }
 void binary_invert(int n,char bit)
